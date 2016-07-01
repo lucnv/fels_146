@@ -9,6 +9,7 @@ class LessonsController < ApplicationController
       user_id: current_user.id
     if @lesson.save
       flash[:success] = t "controllers.lessons.flash.success.create_lesson"
+      current_user.store_action Activity.actions[:start_lesson], @lesson.id
       redirect_to edit_lesson_path @lesson
     else
       flash[:danger] = t "controllers.lessons.flash.danger.create_lesson"
@@ -24,6 +25,7 @@ class LessonsController < ApplicationController
     completed_lesson_params[:is_completed] = true
     if @lesson.update_attributes completed_lesson_params
       flash[:success] = t "controllers.lessons.flash.success.finish"
+      current_user.store_action Activity.actions[:finish_lesson], @lesson.id
       redirect_to lesson_path @lesson
     else
       flash[:danger] = t "controllers.lessons.flash.danger.finish"

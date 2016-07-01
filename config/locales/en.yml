@@ -51,7 +51,7 @@ en:
             delete_word: "Word and and answers has been deleted"
           danger:
             load_word: ""
-            delete_word: "This word has been exist in lesson, can't delete this word!"
+            delete_word: "This word has been exist in lesson, can't delete!"
     application:
       flash:
         warning:
@@ -91,7 +91,8 @@ en:
       activity:
         follow_action: "Followed"
         unfollow_action: "Unfollowed"
-        target_user: "a user"
+        start_lesson: "Start lesson %{id} in category %{category}"
+        finish_lesson: "Finish lesson %{id} with mark %{mark}"
     admin:
       users:
         index:
@@ -169,6 +170,7 @@ en:
       logout: "Logout"
       login: "Login"
       categories: "Categories"
+      lessons: "Lessons"
       words: "Words"
     footer:
       about: "About"
@@ -184,6 +186,12 @@ en:
       stat:
         following: "following"
         followers: "followers"
+      lessons:
+        lesson: "Lesson"
+        category: "Category"
+        status: "Status"
+        mark: "Mark"
+        time: "Last interactive"
     pages:
       about:
         title: "About"
@@ -219,6 +227,12 @@ en:
           unfollow: "Unfollow"
       show:
         activities_history: "Activities history"
+        lessons: "Lessons"
+        header_lesson_id: "Lesson ID"
+        header_category: "Category"
+        header_status: "Status"
+        header_mark: "Mark"
+        header_last_interactive: "Last interactive"
     followings:
       index:
         title: "Followings users"
@@ -232,7 +246,10 @@ en:
         title: "All categories"
         content: "Show all categories"
         start_lesson: "Start lesson"
-        show_word: "Show word"
+        show_word: "Show words"
+        category: "Category"
+        stats: "Learnt/Total words"
+        action: "Action"
       show:
         title: "Show categories"
     lessons:
@@ -246,6 +263,14 @@ en:
         content: "Review lesson"
         exam_date: "Exam Date:"
         exam_result: "Exam Result:"
+      lesson:
+        status_doing: "Doing"
+        status_finished: "Finished"
+        view: "View"
+        continue: "Continue"
+      lesson_word:
+        correct_answer: "Correct!"
+        wrong_answer: "The correct answer is: %{answer}"
     words:
       index:
         title: "Show words"

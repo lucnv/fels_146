@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @activities = @user.activities.limit Settings.activities_on_profile
+    @lessons = Lesson.order(created_at: :desc).by_user(current_user)
+      .paginate page: params[:page], per_page: Settings.lessons_per_page
   end
 
   def new

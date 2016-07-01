@@ -1,0 +1,16 @@
+<table class="table table-striped show-all-lessons">
+  <thead>
+    <tr>
+      <th class="lesson"><%= t "views.shared.lessons.lesson" %></th>
+      <th class="category"><%= t "views.shared.lessons.category" %></th>
+      <th class="status"><%= t "views.shared.lessons.status" %></th>
+      <th class="mark-lesson"><%= t "views.shared.lessons.mark" %></th>
+      <th class="time"><%= t "views.shared.lessons.time" %></th>
+      <th class="action"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render lessons %>
+  </tbody>
+</table>
+<%= will_paginate lessons %>

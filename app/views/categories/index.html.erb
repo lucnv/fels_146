@@ -1,17 +1,31 @@
 <% provide :title, t("views.categories.index.title") %>
 <h1><%= t "views.categories.index.content" %></h1>
-<%= will_paginate %>
-<ul class="categories">
-  <% @categories.each do |category| %>
-    <li>
-      <%= link_to category.name, categories_path %>
-      <span><%= category.words.count %></span>
-      <%= link_to t("views.categories.index.start_lesson"),
-        lessons_path(category_id: category.id),
-        method: :post, class: "btn btn-primary pull-right" %>
-      <%= link_to t("views.categories.index.show_word"), words_path(category_id: category.id),
-        class: "btn btn-primary pull-right" %>
-    </li>
-  <% end %>
-</ul>
+<br>
+<table class="table table-striped show-all-categories">
+  <thead>
+    <tr>
+      <th class="category"><%= t "views.categories.index.category" %></th>
+      <th class="stats"><%= t "views.categories.index.stats" %></th>
+      <th class="action"><%= t "views.categories.index.action" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= link_to category.name, "#" %>
+        <td>
+          <%= Word.in_category(category.id).learnt(current_user.id).count.to_s +
+            "/" + category.words.count.to_s %>
+        <td>
+          <%= link_to t("views.categories.index.show_word"),
+            words_path(category_id: category.id),
+            class: "btn btn-info" %>
+          <%= link_to t("views.categories.index.start_lesson"),
+            lessons_path(category_id: category.id),
+            method: :post, class: "btn btn-primary" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= will_paginate %>
