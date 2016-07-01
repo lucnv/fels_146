@@ -4,10 +4,10 @@ words_per_page: 10
 activities_on_profile: 10
 questions_in_lesson: 3
 minimum_words: 3
+words_per_page: 5
 filter_options:
   - "learnt"
   - "true_learnt"
   - "wrong_learnt"
   - "not_yet"
   - "all_words"
-words_per_page: 5
