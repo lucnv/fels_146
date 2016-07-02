@@ -1,0 +1,26 @@
+<tr>
+  <td class="lesson"><%= lesson.id %></td>
+  <td>
+    <%= link_to lesson.category.name,
+      words_path(category_id: lesson.category.id) %>
+  </td>
+  <% if lesson.is_completed? %>
+    <td><%= t "views.lessons.lesson.status_finished" %></td>
+    <td>
+      <%= lesson.count_correct_answers.to_s + "/" + lesson.lesson_words.count.to_s %>
+    </td>
+  <% else %>
+    <td><%= t "views.lessons.lesson.status_doing" %></td>
+    <td>-</td>
+  <% end %>
+  <td><%= lesson.updated_at %></td>
+  <td>
+    <% if lesson.is_completed? %>
+      <%= link_to t("views.lessons.lesson.view"), lesson_path(lesson),
+        class: "btn btn-success btn-sm" %>
+    <% else %>
+      <%= link_to t("views.lessons.lesson.continue"), edit_lesson_path(lesson),
+        class: "btn btn-primary btn-sm" %>
+    <% end %>
+  </td>
+</tr>

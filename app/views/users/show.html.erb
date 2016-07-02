@@ -24,6 +24,8 @@
   </aside>
   <div class="col-md-8">
     <%= render "follow_form" %>
+    <h3><%= t "views.users.show.lessons" %></h3>
+    <%= render "shared/lessons", lessons: @lessons %>
   </div>
 </div>
 

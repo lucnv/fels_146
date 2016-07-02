@@ -14,6 +14,7 @@ class Word < ActiveRecord::Base
   QUERRY_WORD_LEARNT = "id in (SELECT ls.word_id FROM
     lesson_words ls JOIN lessons l ON ls.lesson_id = l.id
     WHERE l.user_id = ?)"
+
   QUERRY_WORD_NOT_YET = "id not in (SELECT ls.word_id FROM
     lesson_words ls JOIN lessons l ON ls.lesson_id = l.id
     WHERE l.user_id = ?)"
@@ -22,21 +23,25 @@ class Word < ActiveRecord::Base
   has_many :lesson_words, dependent: :destroy
   belongs_to :category
 
+  scope :random, -> {order "RANDOM()"}
+  scope :in_category, -> category_id do
+    where category_id: category_id if category_id.present?
+  end
+  scope :all_words, ->user_id{}
+  scope :not_yet, ->user_id{where QUERRY_WORD_NOT_YET, user_id}
+  scope :learnt, ->user_id{where QUERRY_WORD_LEARNT, user_id}
+  scope :true_learnt, ->user_id{where QUERRY_WORD_TRUE_LEARNT}
+  scope :wrong_learnt, ->user_id{where QUERRY_WORD_WRONG_LEARNT}
+
+
   validates :name, presence: true, length: {maximum: 50}
   validate :check_answers
 
   accepts_nested_attributes_for :word_answers, allow_destroy: true,
     reject_if: proc {|attributes| attributes[:content].blank?}
 
-  scope :random, -> {order "RANDOM()"}
-  scope :in_category, -> (category) {where category_id: category.id}
-  scope :all_words, ->user_id{}
-  scope :not_yet, ->user_id{where QUERRY_WORD_NOT_YET, user_id}
-  scope :learnt, ->user_id{where QUERRY_WORD_LEARNT, user_id}
-  scope :true_learnt, ->user_id{where QUERRY_WORD_TRUE_LEARNT, user_id}
-  scope :wrong_learnt, ->user_id{where QUERRY_WORD_WRONG_LEARNT, user_id}
-  scope :in_category, ->category_id do
-    where category_id: category_id if category_id.present?
+  def correct_answer
+    self.word_answers.correct.first
   end
 
   private

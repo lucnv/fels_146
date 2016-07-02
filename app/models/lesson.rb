@@ -5,6 +5,8 @@ class Lesson < ActiveRecord::Base
 
   before_create :assign_words
 
+  scope :by_user, -> (user) {where user_id: user.id}
+
   validates :category, presence: true
   validate :check_words_category
 
