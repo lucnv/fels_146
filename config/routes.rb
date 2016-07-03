@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     member do
       resources :followings, only: :index
       resources :followers, only: :index
+      resources :activities, only: :index
     end
   end
 
@@ -29,8 +30,5 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
-
   resources :lessons, only: [:create, :edit, :update, :show]
-
-  resources :words, only: :index
 end

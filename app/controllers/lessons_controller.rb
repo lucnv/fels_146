@@ -12,7 +12,7 @@ class LessonsController < ApplicationController
       current_user.store_action Activity.actions[:start_lesson], @lesson.id
       redirect_to edit_lesson_path @lesson
     else
-      flash[:danger] = t "controllers.lessons.flash.danger.create_lesson"
+      flash[:danger] = @lesson.errors.full_messages.last
       redirect_to categories_path
     end
   end

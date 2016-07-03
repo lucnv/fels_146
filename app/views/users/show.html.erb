@@ -14,11 +14,12 @@
       <%= render "shared/stats" %>
     </section>
     <section class="activities_view">
-      <h4><%= t "views.users.show.activities_history" %></h4>
+      <h3><%= t "views.users.show.activities_history" %></h3>
       <% if @activities.any? %>
         <ul class="activities">
           <%= render @activities %>
         </ul>
+        <%= link_to t("views.users.show.more_activities"), activities_path(@user) %>
       <% end %>
     </section>
   </aside>

@@ -21,16 +21,16 @@ class Lesson < ActiveRecord::Base
 
   private
   def assign_words
-    Word.in_category(self.category.id).random.limit(Settings.questions_in_lesson)
+    Word.in_category(self.category.id).random.limit(Settings.words_in_lesson)
       .each do |word|
       self.lesson_words.build word_id: word.id
     end
   end
 
   def check_words_category
-    unless self.category && self.category.words.count >= Settings.minimum_words
+    unless self.category && self.category.words.count >= Settings.words_in_lesson
       self.errors.add :category,
-        I18n.t("model.lesson.errors.category_not_satisfy")
+        I18n.t("models.lesson.errors.not_enough_words")
     end
   end
 end

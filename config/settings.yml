@@ -2,9 +2,9 @@ users_per_page: 10
 categories_per_page: 5
 words_per_page: 10
 lessons_per_page: 20
+activities_per_page: 15
 activities_on_profile: 10
-questions_in_lesson: 3
-minimum_words: 3
+words_in_lesson: 5
 minimum_answers: 2
 maximum_answers: 6
 avatar_size_default: 80

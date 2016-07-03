@@ -13,5 +13,9 @@
 
       <%= f.submit t("views.sessions.new.submit_button"), class: "btn btn-primary" %>
     <% end %>
+    <div class="signup-suggest">
+      <%= t "views.sessions.new.ask_no_account" %>
+      <%= link_to t("views.sessions.new.sign_up_now"), signup_path %>
+    </div>
   </div>
 </div>
