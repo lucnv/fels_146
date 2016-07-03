@@ -1,13 +1,13 @@
 class Admin::WordsController < ApplicationController
   before_action :logged_in_user, :authorize_admin
   before_action :load_category, only: :new
-  before_action :load_word, only: [:edit, :update]
+  before_action :load_word, only: [:edit, :update, :destroy]
   before_action :check_lesson_words, only: :destroy
 
   def index
     @categories = Category.all
-    @words = Word.in_category(params[:category]).paginate page: params[:page],
-      per_page: Settings.words_per_page
+    @words = Word.in_category(params[:category])
+      .paginate page: params[:page], per_page: Settings.words_per_page
   end
 
   def new
@@ -18,7 +18,7 @@ class Admin::WordsController < ApplicationController
     @word = Word.new word_params
     if @word.save
       flash[:success] = t "controllers.admin.words.flash.success.create_word"
-      redirect_to admin_categories_path
+      redirect_to admin_words_path
     else
       render :new
     end
@@ -31,26 +31,22 @@ class Admin::WordsController < ApplicationController
   def update
     if @word.update_attributes word_params
       flash[:success] = t "controllers.admin.words.flash.success.update_word"
-      redirect_to admin_categories_path
+      redirect_to admin_words_path
     else
       render :edit
     end
   end
 
   def destroy
-    @word.destroy
-    flash[:success] = t "controllers.admin.words.flash.success.delete_word"
+    if @word.destroy
+      flash[:success] = t "controllers.admin.words.flash.success.delete_word"
+    else
+      flash[:danger] = t "controllers.admin.words.flash.danger.delete_word"
+    end
     redirect_to admin_words_path
   end
 
   private
-  def check_lesson_words
-    if @word.lesson_words.any?
-      flash[:danger] = t "controllers.admin.words.flash.danger.delete_word"
-      redirect_to admin_words_path
-    end
-  end
-
   def load_category
     @category = Category.find_by id: params[:category_id]
     unless @category
@@ -68,7 +64,14 @@ class Admin::WordsController < ApplicationController
     @word = Word.find_by id: params[:id]
     unless @word
       flash[:danger] = t "controllers.application.flash.danger.invalid_word"
-      redirect_to admin_categories_path
+      redirect_to admin_words_path
+    end
+  end
+
+  def check_lesson_words
+    if @word.lesson_words.any?
+      flash[:danger] = t "controllers.admin.words.flash.danger.lesson_words_exist"
+      redirect_to admin_words_path
     end
   end
 end

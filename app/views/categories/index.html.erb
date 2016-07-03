@@ -5,7 +5,8 @@
   <thead>
     <tr>
       <th class="category"><%= t "views.categories.index.category" %></th>
-      <th class="stats"><%= t "views.categories.index.stats" %></th>
+      <th class="learnt_words"><%= t "views.categories.index.learnt_words" %></th>
+      <th class="total_words"><%= t "views.categories.index.total_words" %></th>
       <th class="action"><%= t "views.categories.index.action" %></th>
     </tr>
   </thead>
@@ -14,12 +15,13 @@
       <tr>
         <td><%= link_to category.name, "#" %>
         <td>
-          <%= Word.in_category(category.id).learnt(current_user.id).count.to_s +
-            "/" + category.words.count.to_s %>
+          <%= Word.in_category(category.id).learnt(current_user.id).count %>
+        </td>
+        <td><%= category.words.count.to_s %></td>
         <td>
           <%= link_to t("views.categories.index.show_word"),
             words_path(category_id: category.id),
-            class: "btn btn-info" %>
+            class: "btn btn-success" %>
           <%= link_to t("views.categories.index.start_lesson"),
             lessons_path(category_id: category.id),
             method: :post, class: "btn btn-primary" %>

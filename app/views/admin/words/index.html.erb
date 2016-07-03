@@ -7,20 +7,15 @@
       options_for_select(@categories.collect {|category| [category.name, category.id]},
       params[:category]), prompt: t("views.admin.words.index.option_all"),
       class: "form-control" %>
-    <%= submit_tag t("views.admin.words.index.filter_button"),
-      class: "btn btn-primary" %>
   <% end %>
 </div>
 <br>
-<table class="table table-striped manager-users">
+<table class="table table-striped manager-words">
   <thead>
-    <col width="10%">
-    <col width="75%">
-    <col width="15%">
     <tr>
-      <th><%= t "views.admin.words.index.header_word_id" %></th>
-      <th><%= t "views.admin.words.index.header_word_name" %></th>
-      <th><%= t "views.admin.words.index.header_action" %></th>
+      <th class="id"><%= t "views.admin.words.index.header_word_id" %></th>
+      <th class="name"><%= t "views.admin.words.index.header_word_name" %></th>
+      <th class="action"><%= t "views.admin.words.index.header_action" %></th>
     <tr>
   </thead>
   <tbody>

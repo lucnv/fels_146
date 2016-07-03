@@ -107,6 +107,14 @@ input {
   height: auto !important;
 }
 
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
 /* Users index */
 
 .users {
@@ -297,7 +305,20 @@ fieldset {
   }
 }
 
-.manager-users{
+.manager-words  {
+  thead{
+    tr{
+      .id{
+        width: 10%;
+      }
+      .name{
+        width: 75%;
+      }
+      .action{
+        width: 15%;
+      }
+    }
+  }
   tbody{
     tr{
       .word-id{
@@ -309,10 +330,26 @@ fieldset {
 
 /* Categories manager */
 .manager-categories{
+  thead{
+    tr{
+      .id{
+        width: 10%;
+      }
+      .name{
+        width: 50%;
+      }
+      .total{
+        width: 20%;
+      }
+      .action{
+        width: 20%;
+      }
+    }
+  }
   tbody{
     tr{
       .category-id{
-        padding-left: 20px;
+        padding-left: 30px;
       }
     }
   }
@@ -320,10 +357,26 @@ fieldset {
 
 /* Users manager */
 .manager-users{
+  thead{
+    tr{
+      .id{
+        width: 10%;
+      }
+      .name{
+        width: 40%;
+      }
+      .email{
+        width: 40%;
+      }
+      .action{
+        width: 10%;
+      }
+    }
+  }
   tbody{
     tr{
       .user-id{
-        padding-left: 20px;
+        padding-left: 30px;
       }
       .user-name{
         .admin-name{
@@ -396,10 +449,13 @@ ol{
   thead{
     tr{
       .category{
-        width: 50%;
+        width: 40%;
       }
-      .stats{
-        width: 30%;
+      .learnt_words{
+        width: 20%;
+      }
+      .total_words{
+        width: 20%;
       }
       .action{
         width: 20%;
