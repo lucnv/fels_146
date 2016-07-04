@@ -5,6 +5,8 @@ lessons_per_page: 20
 activities_on_profile: 10
 questions_in_lesson: 3
 minimum_words: 3
+minimum_answers: 2
+maximum_answers: 6
 avatar_size_default: 80
 avatar_size_small: 50
 filter_options:

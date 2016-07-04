@@ -2,22 +2,20 @@
 <h1><%= t "views.admin.categories.index.content" %></h1>
 <table class="table table-striped manager-categories">
   <thead>
-    <col width="10%">
-    <col width="50%">
-    <col width="20%">
-    <col width="20%">
     <tr>
-      <th><%= t "views.admin.categories.index.header_category_id" %></th>
-      <th><%= t "views.admin.categories.index.header_category_name" %></th>
-      <th><%= t "views.admin.categories.index.header_total_words" %></th>
-      <th><%= t "views.admin.categories.index.header_action" %></th>
+      <th class="id"><%= t "views.admin.categories.index.category_id" %></th>
+      <th class="name"><%= t "views.admin.categories.index.category_name" %></th>
+      <th class="total"><%= t "views.admin.categories.index.total_words" %></th>
+      <th class="action"><%= t "views.admin.categories.index.action" %></th>
     </tr>
   </thead>
   <tbody>
     <% @categories.each do |category| %>
       <tr>
         <td class="category-id"><%= category.id %></td>
-        <td><%= link_to category.name, categories_path %></td>
+        <td>
+          <%= link_to category.name, admin_words_path(category: category.id) %>
+        </td>
         <td><%= category.words.count%></td>
         <td>
           <%= link_to t("views.admin.categories.index.add_word"),

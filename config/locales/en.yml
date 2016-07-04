@@ -23,8 +23,10 @@ en:
   models:
     word:
       errors:
-        required_answer: "must have at least an answer"
-        correct_answer: "must have only correct answer"
+        number_answers: "number must be in [2..6]"
+        same_answers: "can't have the same content"
+        correct_answers: "must have only one correct answer"
+        has_lesson_words: "exist"
     lesson:
       errors:
         category_not_satisfy: "is not satisfy"
@@ -43,15 +45,17 @@ en:
             edit_category: "Category has been updated"
             delete_category: "Category deleted"
           danger:
-            delete_categoy: "Lesson exist, can't delete"
+            delete_category: "Lesson exist, can't delete"
       words:
         flash:
           success:
-            create_word: "Word has been created"
-            delete_word: "Word and and answers has been deleted"
+            create_word: "Word and its answers has been created"
+            delete_word: "Word and its answers has been deleted"
+            update_word: "Word and its answers has been updated!"
           danger:
-            load_word: ""
-            delete_word: "This word has been exist in lesson, can't delete!"
+            load_word: "This word does not exist"
+            delete_word: "Fail to delete word"
+            lesson_words_exist: "This word has lesson words, can't delete"
     application:
       flash:
         warning:
@@ -121,9 +125,9 @@ en:
           constant: "Exist lesson, can't delete"
           edit: "Edit"
           add_word: "Add word"
-          header_category_id: "Word ID"
-          header_category_name: "Word"
-          header_total_words: "Total words"
+          category_id: "Category ID"
+          category_name: "Category"
+          total_words: "Total words"
           header_action: "Action"
           add_category: "Add new category"
       words:
@@ -215,7 +219,7 @@ en:
         change_avatar: "Change your avatar"
       index:
         title: "All users"
-        content: "Show all users"
+        content: "All users"
       new:
         title: "Signup"
         content: "Signup"
@@ -244,11 +248,12 @@ en:
     categories:
       index:
         title: "All categories"
-        content: "Show all categories"
+        content: "All categories"
         start_lesson: "Start lesson"
         show_word: "Show words"
         category: "Category"
-        stats: "Learnt/Total words"
+        learnt_words: "Learnt words"
+        total_words: "Total words"
         action: "Action"
       show:
         title: "Show categories"
@@ -269,11 +274,11 @@ en:
         view: "View"
         continue: "Continue"
       lesson_word:
-        correct_answer: "Correct!"
+        correct_answer: "Correct"
         wrong_answer: "The correct answer is: %{answer}"
     words:
       index:
-        title: "Show words"
+        title: "Words"
         content: "Words"
         submit_filter: "Filter"
         table_head: "Word"
