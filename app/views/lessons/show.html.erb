@@ -1,12 +1,17 @@
 <% provide :title, t("views.lessons.show.content") %>
 <div class="exam_info">
-  <%= t "view.lessons.show.exam_date" %>:
+  <div class="category">
+    <%= t "view.lessons.show.category" %>:
+    <%= @lesson.name %>
+  </div>
+  <%= t "view.lessons.show.lesson_date" %>:
   <%= @lesson.created_at %>
-  <br>
-  <%= t "view.lessons.show.exam_result" %>:
-  <span class="exam_result">
-    <%= @lesson.count_correct_answers.to_s + "/" + @lesson.lesson_words.count.to_s %>
-  </span>
+  <div class="result">
+    <%= t "view.lessons.show.lesson_result" %>:
+    <span class="exam_result">
+      <%= @lesson.count_correct_answers.to_s + "/" + @lesson.lesson_words.count.to_s %>
+    </span>
+  </div>
 </div>
 <h1><%= t "views.lessons.show.content" %></h1>
 <%= form_for @lesson do |f| %>

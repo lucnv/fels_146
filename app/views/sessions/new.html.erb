@@ -11,7 +11,8 @@
       <%= f.label :password %>
       <%= f.password_field :password, class: "form-control" %>
 
-      <%= f.submit t("views.sessions.new.submit_button"), class: "btn btn-primary" %>
+      <%= f.submit t("views.sessions.new.submit_button"),
+        class: "btn btn-primary form-control" %>
     <% end %>
     <div class="signup-suggest">
       <%= t "views.sessions.new.ask_no_account" %>

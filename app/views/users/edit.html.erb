@@ -17,7 +17,8 @@
       <%= f.label :password_confirmation, t("views.users.edit.confirmation") %>
       <%= f.password_field :password_confirmation, class: "form-control" %>
 
-      <%= f.submit t("views.users.edit.submit_button"), class: "btn btn-primary" %>
+      <%= f.submit t("views.users.edit.submit_button"),
+        class: "btn btn-primary form-control" %>
     <% end %>
     <div class="gravatar_edit">
       <%= gravatar_for @user %>
