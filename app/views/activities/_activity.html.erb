@@ -1,6 +1,7 @@
 <% if obj = activity.target_object %>
   <li>
     <span class="content">
+      <%= activity.user.name %>
       <% case activity.action_type %>
       <% when Activity.actions[:follow] %>
         <%= t "views.activities.activity.follow_action" %>
@@ -17,7 +18,9 @@
       <% end %>
     </span>
     <span class="timestamp">
-      <%= activity.created_at %>
+      <%= time_ago_in_words activity.created_at %>
+      <%= t "views.activities.activity.time_ago" %>
+      (<%= activity.created_at %>)
     </span>
   </li>
 <% end %>

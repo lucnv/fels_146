@@ -29,7 +29,7 @@ en:
         has_lesson_words: "exist"
     lesson:
       errors:
-        category_not_satisfy: "is not satisfy"
+        not_enough_words: "not enough words to create lesson"
   controllers:
     admin:
       users:
@@ -93,10 +93,14 @@ en:
   views:
     activities:
       activity:
-        follow_action: "Followed"
-        unfollow_action: "Unfollowed"
-        start_lesson: "Start lesson %{id} in category %{category}"
-        finish_lesson: "Finish lesson %{id} with mark %{mark}"
+        follow_action: "followed"
+        unfollow_action: "unfollowed"
+        start_lesson: "start lesson %{id} in category %{category}"
+        finish_lesson: "finish lesson %{id} with mark %{mark}"
+        time_ago: "ago."
+      index:
+        title: "Activities"
+        activities: "Activities"
     admin:
       users:
         index:
@@ -184,6 +188,8 @@ en:
         title: "Login"
         content: "Login"
         submit_button: "Login"
+        ask_no_account: "You don't have any account?"
+        sign_up_now: "Sign up now"
     shared:
       error_messages:
         form_contains: "This form contains "
@@ -237,6 +243,7 @@ en:
         header_status: "Status"
         header_mark: "Mark"
         header_last_interactive: "Last interactive"
+        more_activities: "More activities ..."
     followings:
       index:
         title: "Followings users"

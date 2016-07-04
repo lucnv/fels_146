@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_action :authorize_user, only: [:edit, :update]
 
   def index
-    @users = User.order(:name).paginate page: params[:page], per_page: Settings.users_per_page
+    @users = User.order(:name).paginate page: params[:page],
+      per_page: Settings.users_per_page
   end
 
   def show
