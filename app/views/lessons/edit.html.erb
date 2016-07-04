@@ -1,6 +1,10 @@
 <% provide :title, t("views.lessons.edit.content") %>
 <div class="exam_info">
-  <%= t "view.lessons.edit.exam_date" %>:
+  <div class="category">
+    <%= t "view.lessons.show.category" %>:
+    <%= @lesson.name %>
+  </div>
+  <%= t "view.lessons.edit.lesson_date" %>:
   <%= @lesson.created_at %>
 </div>
 <h1><%= t "views.lessons.edit.content" %></h1>

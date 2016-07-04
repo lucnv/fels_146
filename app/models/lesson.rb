@@ -3,6 +3,8 @@ class Lesson < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
 
+  delegate :name, to: :category
+
   before_create :assign_words
 
   scope :by_user, -> (user) {where user_id: user.id}

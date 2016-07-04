@@ -268,13 +268,15 @@ en:
       edit:
         title: "Do lesson"
         content: "Do lesson"
-        exam_date: "Exam Date:"
+        lesson_date: "Lesson Date"
         submit_button: "Finish"
+        category: "Category"
       show:
         title: "Review lesson"
         content: "Review lesson"
-        exam_date: "Exam Date:"
-        exam_result: "Exam Result:"
+        lesson_date: "Lesson Date"
+        lesson_result: "Lesson Result"
+        category: "Category"
       lesson:
         status_doing: "Doing"
         status_finished: "Finished"
